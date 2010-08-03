@@ -39,7 +39,7 @@
 				$headers[$name] = $value;
 			}
 
-			$credentials = Symphony::Configuration()->{'smtp-email-library'};
+			$credentials = Symphony::Configuration()->{'smtp-email-library'}();
 
 			$smtp = Mail::factory('smtp', array(
 				'host' => $credentials->host,

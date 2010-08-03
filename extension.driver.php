@@ -139,16 +139,16 @@
 			$group->setAttribute('class', 'group');
 
 			$label = Widget::Label(__('Host'));
-			$label->appendChild(Widget::Input('smtp_email_library[host]', Symphony::Configuration()->{'smtp-email-library'}->host));
+			$label->appendChild(Widget::Input('smtp-email-library[host]', Symphony::Configuration()->{'smtp-email-library'}()->host));
 			$group->appendChild($label);
 
 			$label = Widget::Label(__('Port'));
-			$label->appendChild(Widget::Input('smtp_email_library[port]', Symphony::Configuration()->{'smtp-email-library'}->port));
+			$label->appendChild(Widget::Input('smtp-email-library[port]', Symphony::Configuration()->{'smtp-email-library'}()->port));
 			$group->appendChild($label);
 			$fieldset->appendChild($group);
 
 			$label = Widget::Label();
-			$input = Widget::Input('smtp_email_library[auth]', 'yes', 'checkbox');
+			$input = Widget::Input('smtp-email-library[auth]', 'yes', 'checkbox');
 			if(Symphony::Configuration()->{'smtp-email-library'}()->auth == 'yes') $input->setAttribute('checked', 'checked');
 			$label->appendChild($input);
 			$label->appendChild(new DOMText(' ' . __('Authentication Required')));
@@ -164,11 +164,11 @@
 			$group->setAttribute('class', 'group');
 
 			$label = Widget::Label(__('Username'));
-			$label->appendChild(Widget::Input('smtp_email_library[username]', Symphony::Configuration()->{'smtp-email-library'}->username));
+			$label->appendChild(Widget::Input('smtp-email-library[username]', Symphony::Configuration()->{'smtp-email-library'}()->username));
 			$group->appendChild($label);
 
 			$label = Widget::Label(__('Password'));
-			$label->appendChild(Widget::Input('smtp_email_library[password]', Symphony::Configuration()->{'smtp-email-library'}->password));
+			$label->appendChild(Widget::Input('smtp-email-library[password]', Symphony::Configuration()->{'smtp-email-library'}()->password));
 			$group->appendChild($label);
 			$fieldset->appendChild($group);
 
@@ -179,6 +179,11 @@
 			Symphony::Configuration()->{'smtp-email-library'}()->auth = (isset($_POST['smtp-email-library']['auth']))
 				? $_POST['smtp-email-library']['auth']
 				: 'no';
+
+			Symphony::Configuration()->{'smtp-email-library'}()->host = $_POST['smtp-email-library']['host'];
+			Symphony::Configuration()->{'smtp-email-library'}()->port = $_POST['smtp-email-library']['port'];
+			Symphony::Configuration()->{'smtp-email-library'}()->username = $_POST['smtp-email-library']['username'];
+			Symphony::Configuration()->{'smtp-email-library'}()->password = $_POST['smtp-email-library']['password'];
 
 			Symphony::Configuration()->{'smtp-email-library'}()->save();
 		}
