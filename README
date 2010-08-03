@@ -1,10 +1,10 @@
 SMTP Email Library
 ------------------------------------
 
-Version: 1.1
-Author: Alistair Kearney (alistair@symphony-cms.com)
-Build Date: 12th Feb 2010
-Requirements: Symphony 2.0.6 or above
+Version: 2.0alpha
+Author: Alistair Kearney (alistair@symphony-cms.com), Brendan Abbott
+Build Date: 3rd August 2010
+Requirements: Symphony 3
 
 Establishes a direct SMTP connection with target email server rather than rely on PHP's flaky mail() function.
 
@@ -16,12 +16,7 @@ A replacement for the built in "Send Email" functionality of Symphony's core. In
 
 2. Enable it by selecting the "SMTP Email Library", choose Enable from the with-selected menu, then click Apply.
 
-Note: If your server already has PEAR installed, you may need to remove the folder "extension/smtp_email_library/lib/pear" otherwise class name classes could occur.
-
-[CHANGE LOG]
-
-	1.1	- Fixed some small bugs that appear when using Symphony 2.0.7RC1
-	1.0 - Initial Release
+Note: If your server already has PEAR installed, you may need to remove the folder "extension/smtp_email_library/lib/pear" otherwise class name conflicts could occur.
 
 [USAGE]
 

@@ -21,7 +21,7 @@
 // $Id: SMTP.php 284052 2009-07-14 05:34:26Z jon $
 
 require_once 'PEAR.php';
-require_once 'Net/Socket.php';
+require_once 'Socket.php';
 
 /**
  * Provides an implementation of the SMTP protocol using PEAR's
@@ -354,7 +354,7 @@ class Net_SMTP
     /**
      * Return the SMTP server's greeting string.
      *
-     * @return  string  A string containing the greeting string, or null if a 
+     * @return  string  A string containing the greeting string, or null if a
      *                  greeting has not been received.
      *
      * @access  public
@@ -511,9 +511,9 @@ class Net_SMTP
      */
     function auth($uid, $pwd , $method = '')
     {
-        /* We can only attempt a TLS connection if we're running PHP 5.1.0 or 
-         * later, have access to the OpenSSL extension, are connected to an 
-         * SMTP server which supports the STARTTLS extension, and aren't 
+        /* We can only attempt a TLS connection if we're running PHP 5.1.0 or
+         * later, have access to the OpenSSL extension, are connected to an
+         * SMTP server which supports the STARTTLS extension, and aren't
          * already connected over a secure (SSL) socket connection. */
         $tls = version_compare(PHP_VERSION, '5.1.0', '>=') && extension_loaded('openssl') &&
                isset($this->_esmtp['STARTTLS']) && strncasecmp($this->host, 'ssl://', 6) != 0;
